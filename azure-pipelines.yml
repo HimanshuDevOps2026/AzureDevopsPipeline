@@ -1,0 +1,25 @@
+trigger:
+  branches:
+    include:
+      - main
+pool: FirstAgentPool
+
+stages:
+  - stage: 
+    jobs:
+      - job: 
+        steps:
+          - task: TerraformInstaller@1
+            inputs:
+              terraformVersion: 'latest'
+
+          - task: TerraformTask@5
+            inputs:
+              provider: 'azurerm'
+              command: 'init'
+              backendServiceArm: 'ServiceConnection'
+              backendAzureRmOverrideSubscriptionID: '3008a893-f5d9-4f23-bca6-0665693b4dc9'
+              backendAzureRmResourceGroupName: 'rg-backend'
+              backendAzureRmStorageAccountName: 'storageacc21072026'
+              backendAzureRmContainerName: 'statefile'
+              backendAzureRmKey: 'pipeline.tfstate'
