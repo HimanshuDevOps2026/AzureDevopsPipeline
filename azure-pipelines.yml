@@ -12,7 +12,10 @@ stages:
           - task: TerraformInstaller@1
             inputs:
               terraformVersion: 'latest'
-
+          - task: TerraformTask@5
+            inputs:
+              provider: 'azurerm'
+              command: 'validate'
           - task: TerraformTask@5
             inputs:
               provider: 'azurerm'
@@ -23,3 +26,10 @@ stages:
               backendAzureRmStorageAccountName: 'storageacc21072026'
               backendAzureRmContainerName: 'statefile'
               backendAzureRmKey: 'pipeline.tfstate'
+          - task: TerraformTask@5
+            inputs:
+              provider: 'azurerm'
+              command: 'apply'
+              commandOptions: '-auto-approve'
+              environmentServiceNameAzureRM: 'ServiceConnection'
+              environmentAzureRmOverrideSubscriptionID: '3008a893-f5d9-4f23-bca6-0665693b4dc9'
