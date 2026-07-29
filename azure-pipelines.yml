@@ -17,7 +17,9 @@ stages:
             inputs:
               provider: 'azurerm'
               command: 'init'
-              backendServiceArm: 'Azure subscription 1(3008a893-f5d9-4f23-bca6-0665693b4dc9)'
+              backendServiceArm: 'ServiceConnection'
+              backendAzureRmOverrideSubscriptionID: '3008a893-f5d9-4f23-bca6-0665693b4dc9'
+              backendAzureRmResourceGroupName: 'rg-backend'
               backendAzureRmStorageAccountName: 'storageacc21072026'
               backendAzureRmContainerName: 'statefile'
               backendAzureRmKey: 'pipeline.tfstate'
